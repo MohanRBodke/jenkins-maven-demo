@@ -14,26 +14,55 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean install'
             }
         }
-
-        stage('Test') {
+        stage('Deploy to Test') {
             steps {
-                sh 'mvn test'
+                sh './deploy-to-test.sh'
             }
         }
-
-        // stage('Postman API Tests') {
-        //     steps {
-        //         sh 'C:\\Users\\mohan\\AppData\\Roaming\\npm\\newman.cmd run postman_collection.json'
-        //     }
-        // }
+        stage('Integration Tests') {
+            steps {
+                sh 'mvn verify'
+            }
+        }
+        stage('API Tests') {
+            steps {
+                sh 'newman run your_collection.json -e environment.json'
+            }
+        }
     }
-
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            junit 'target/surefire-reports/*.xml'
+            echo 'Sending email/report...'
         }
     }
 }
+
+//         stage('Build') {
+//             steps {
+//                 sh 'mvn clean package'
+//             }
+//         }
+
+//         stage('Test') {
+//             steps {
+//                 sh 'mvn test'
+//             }
+//         }
+
+//         // stage('Postman API Tests') {
+//         //     steps {
+//         //         sh 'C:\\Users\\mohan\\AppData\\Roaming\\npm\\newman.cmd run postman_collection.json'
+//         //     }
+//         // }
+//     }
+
+//     post {
+//         always {
+//             junit '**/target/surefire-reports/*.xml'
+//         }
+//     }
+// }
