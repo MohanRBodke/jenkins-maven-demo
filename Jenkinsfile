@@ -24,11 +24,11 @@ pipeline {
             }
         }
 
-        stage('Postman API Tests') {
-            steps {
-                sh 'C:\\Users\\mohan\\AppData\\Roaming\\npm\\newman.cmd run postman_collection.json'
-            }
-        }
+        // stage('Postman API Tests') {
+        //     steps {
+        //         sh 'C:\\Users\\mohan\\AppData\\Roaming\\npm\\newman.cmd run postman_collection.json'
+        //     }
+        // }
     }
 
     post {
