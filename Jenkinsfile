@@ -18,11 +18,11 @@ pipeline {
                 echo 'Skipping deployment step'
             }
         }
-        stage('Deploy to Test') {
-            steps {
-                sh './deploy-to-test.sh'
-            }
-        }
+        // stage('Deploy to Test') {
+        //     steps {
+        //         sh './deploy-to-test.sh'
+        //     }
+        // }
         stage('Integration Tests') {
             steps {
                 sh 'mvn verify'
