@@ -26,7 +26,7 @@ pipeline {
 
         stage('Postman API Tests') {
             steps {
-                sh 'newman run postman_collection.json'
+                sh 'C:\\Users\\mohan\\AppData\\Roaming\\npm\\newman.cmd run postman_collection.json'
             }
         }
     }
