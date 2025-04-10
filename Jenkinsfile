@@ -30,7 +30,8 @@ pipeline {
         }
         stage('API Tests') {
             steps {
-                sh 'newman run your_collection.json -e environment.json'
+                sh 'C:/Users/mohan/AppData/Roaming/npm/newman.cmd run your_collection.json -e environment.json'
+                // sh 'newman run your_collection.json -e environment.json'
             }
         }
     }
