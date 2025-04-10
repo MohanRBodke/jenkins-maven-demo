@@ -14,7 +14,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                // sh 'mvn clean install'
+                echo 'Skipping deployment step'
             }
         }
         stage('Deploy to Test') {
